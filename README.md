@@ -1,2 +1,3 @@
 # github-code-embedder
-A WordPress plugin to emebed GitHub or Gist hosted source codes with syntax highlighting
+GitHub Code Embedder helps you to display source codes on your website which are from a public GitHub repository.
+You can also embed gists too.
