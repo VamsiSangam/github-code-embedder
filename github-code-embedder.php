@@ -71,6 +71,47 @@ function github_code_embedder_html_page() {
     <div>
         <h2>GitHub Code Embedder</h2>
         <p>The GitHub code embedder uses jQuery and PrismJS to display your GitHub code in your website.</p>
+        
+        <h2>Select a theme</h2>
+        <p>Selecting a global theme for all your codes to make them look pretty!</p>
+        <form>
+        <input type="radio" name="theme" value="male" checked> Default<br>
+        <input type="radio" name="theme" value="female"> Dark<br>
+        <input type="radio" name="theme" value="female"> Funky<br>
+        <input type="radio" name="theme" value="female"> Okaidia<br>
+        <input type="radio" name="theme" value="female"> Twilight<br>
+        <input type="radio" name="theme" value="female"> Coy<br>
+        <input type="radio" name="theme" value="female"> Solarized Light<br>
+        </form>
+        
+        <h2>Optional Features</h2>
+        
+        <h4>Line Numbers</h4>
+        <p>
+        By activating this option your code will be displayed along with line numbers. By activating this, you can also
+        specify a <b>start-number</b> which will make the line counter start with the specified number.
+        </p>
+        
+        <h4>Line Highlight</h4>
+        <p>
+        By activating this you can highlight certain specific lines in your code. You can highlight single or group of lines.
+        Use <b>line-highlight</b> attribute to specify line numbers. Usage -
+        </p>
+        <ul>
+        <li>line-highlight="5"<br>
+        <small>Highlights 5th line.</small>
+        </li>
+        <li>line-highlight="1-5"<br>
+        <small>Highlights lines 1 to 5.</small>
+        </li>
+        <li>line-highlight="1,4"<br>
+        <small>Highlights lines 1 and 4.</small>
+        </li>
+        <li>line-highlight="1-2,5,9-20"<br>
+        <small>Highlights lines 1 to 2, line 5 and from line 9 to line 20.</small>
+        </li>
+        </ul>
+
         <p><b>Plugin Developer</b> - <a href="https://github.com/VamsiSangam">Vamsi Sangam</a></p>
     <?php
 }
