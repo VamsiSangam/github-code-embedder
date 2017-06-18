@@ -16,11 +16,15 @@ if (is_admin()) {
         add_options_page('GitHub Code Embedder', 'GitHub Code Embedder', 'administrator',
         'github_code_embedder', 'github_code_embedder_html_page');
     }
+
+    if (is_null($_GET['theme'])) {
+        echo $_GET['theme'];
+    }
 }
 
 function github_code_embedder_wp_footer() {
     ?>
-    <!-- Scripts for GitHub Code Embedder -->
+    <!-- For GitHub Code Embedder -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
@@ -32,22 +36,22 @@ function github_code_embedder_wp_footer() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-markup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-css.min.js"></script>
     <script>
-            $(document).ready(function () {
-                $('.dynamic-prism code').each(function (index) {
-                    var url = $(this).attr("data-github-raw");
-                    var pre = $(this);
+        $(document).ready(function () {
+            $('.dynamic-prism code').each(function (index) {
+                var url = $(this).attr("data-github-raw");
+                var pre = $(this);
 
-                    $.get(url, function (data) {
-                        pre.text(data);
-                        Prism.highlightAll();
-                    });
+                $.get(url, function (data) {
+                    pre.text(data);
+                    Prism.highlightAll();
                 });
             });
-        </script>
+        });
+    </script>
     <?php
 }
 
-add_action('wp_footer', 'github_code_embedder_wp_footer');
+add_action('wp_footer', 'github_code_embedder_wp_footer', 100);
 
 function github_code_embedder_wp_head() {
     ?>
@@ -79,33 +83,33 @@ function github_code_embedder_html_page() {
             GitHub Code Embedder enables you to easily display source codes on your website which are hosted by means of GitHub repositories or Gists. This is the plugin settings page where you can customize the plugin functionalities according to your requirement.
         </p>
         <h5>Select a theme</h5>
-        <form action="#">
+        <form action="<?= admin_url() ?>options-general.php?page=github_code_embedder&">
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-default" />
+                <input class="with-gap" name="theme" value="default" type="radio" id="theme-default" />
                 <label class="black-text" for="theme-default">Default</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-dark" />
+                <input class="with-gap" name="theme" value="dark" type="radio" id="theme-dark" />
                 <label class="black-text" for="theme-dark">Dark</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-funky" />
+                <input class="with-gap" name="theme" value="funky" type="radio" id="theme-funky" />
                 <label class="black-text" for="theme-funky">Funky</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-okaidia" />
+                <input class="with-gap" name="theme" value="okaidia" type="radio" id="theme-okaidia" />
                 <label class="black-text" for="theme-okaidia">Okaidia</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-twilight" />
+                <input class="with-gap" name="theme" value="twilight" type="radio" id="theme-twilight" />
                 <label class="black-text" for="theme-twilight">Twilight</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-coy" />
+                <input class="with-gap" name="theme" value="coy" type="radio" id="theme-coy" />
                 <label class="black-text" for="theme-coy">Coy</label>
             </p>
             <p>
-                <input class="with-gap" name="theme" type="radio" id="theme-solarized-light" />
+                <input class="with-gap" name="theme" value="solarized-light" type="radio" id="theme-solarized-light" />
                 <label class="black-text" for="theme-solarized-light">Solarized Light</label>
             </p>
             <br>
